@@ -1,0 +1,457 @@
+<html>
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>📱 Termux Commands</title>
+
+  <!-- Material Icons CDN -->
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+
+    /*=========== Material Color Palette ===========*/
+
+    :root {
+
+      --primary: #1e88e5;
+
+      --primary-light: #6ab7ff;
+
+      --secondary: #fdd835;
+
+      --bg: #f5f7fa;
+
+      --surface: #ffffff;
+
+      --shadow: rgba(0,0,0,0.1);
+
+      --text-primary: #263238;
+
+      --text-secondary: #546e7a;
+
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+
+      font-family: 'Roboto', sans-serif;
+
+      background-color: var(--bg);
+
+      color: var(--text-primary);
+
+      padding: 1rem;
+
+    }
+
+    h1 {
+
+      text-align: center;
+
+      margin-bottom: 1rem;
+
+      color: var(--primary);
+
+      font-size: 2rem;
+
+    }
+
+    .grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+
+      gap: 1rem;
+
+    }
+
+    .card {
+
+      background: var(--surface);
+
+      border-radius: 12px;
+
+      box-shadow: 0 2px 6px var(--shadow);
+
+      padding: 1rem;
+
+      display: flex;
+
+      flex-direction: column;
+
+      transition: transform .2s;
+
+    }
+
+    .card:hover {
+
+      transform: translateY(-4px);
+
+      box-shadow: 0 4px 12px var(--shadow);
+
+    }
+
+    .card-header {
+
+      display: flex;
+
+      align-items: center;
+
+      margin-bottom: .5rem;
+
+    }
+
+    .card-header .material-icons {
+
+      font-size: 1.8rem;
+
+      color: var(--primary);
+
+      margin-right: .5rem;
+
+    }
+
+    .card-header h2 {
+
+      font-size: 1.2rem;
+
+      color: var(--text-primary);
+
+    }
+
+    .desc {
+
+      font-size: .9rem;
+
+      color: var(--text-secondary);
+
+      margin-bottom: .5rem;
+
+    }
+
+    .cmd-box {
+
+      background: var(--bg);
+
+      border-left: 4px solid var(--primary);
+
+      padding: .6rem .8rem;
+
+      font-family: 'Courier New', monospace;
+
+      position: relative;
+
+      cursor: pointer;
+
+      margin-bottom: .6rem;
+
+      border-radius: 4px;
+
+      transition: background .2s;
+
+    }
+
+    .cmd-box:hover { background: var(--primary-light); }
+
+    .cmd-box .material-icons {
+
+      position: absolute;
+
+      right: .6rem;
+
+      top: .6rem;
+
+      font-size: 1rem;
+
+      color: var(--secondary);
+
+      display: none;
+
+    }
+
+    .cmd-box.copied .material-icons {
+
+      display: block;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <h1><span class="material-icons">terminal</span> Termux কমান্ডসমূহ</h1>
+
+  <div class="grid">
+
+    <!-- Card ১ -->
+
+    <div class="card">
+
+      <div class="card-header">
+
+        <span class="material-icons">folder</span>
+
+        <h2>১. ফাইল ও ফোল্ডার</h2>
+
+      </div>
+
+      <div class="desc">নতুন ফোল্ডার/ফাইল তৈরি ও ম্যানেজ</div>
+
+      <div class="cmd-box" onclick="copyCmd(this)">
+
+        mkdir folder_name
+
+        <span class="material-icons">check_circle</span>
+
+      </div>
+
+      <div class="desc" style="margin-left:1.6rem; margin-bottom:.3rem;">📁 নতুন ফোল্ডার তৈরি</div>
+
+      <div class="cmd-box" onclick="copyCmd(this)">
+
+        mkdir myfolder
+
+        <span class="material-icons">check_circle</span>
+
+      </div>
+
+      <div class="desc" style="margin-left:1.6rem; margin-bottom:.3rem;">উদাহরণ</div>
+
+      <div class="cmd-box" onclick="copyCmd(this)">
+
+        touch notes.txt
+
+        <span class="material-icons">check_circle</span>
+
+      </div>
+
+      <div class="desc" style="margin-left:1.6rem;">📄 নতুন ফাইল তৈরি</div>
+
+    </div>
+
+    <!-- Card ২ -->
+
+    <div class="card">
+
+      <div class="card-header">
+
+        <span class="material-icons">delete</span>
+
+        <h2>২. ডিলিট</h2>
+
+      </div>
+
+      <div class="desc">ফাইল/ফোল্ডার ডিলিট</div>
+
+      <div class="cmd-box" onclick="copyCmd(this)">
+
+        rm filename.txt
+
+        <span class="material-icons">check_circle</span>
+
+      </div>
+
+      <div class="desc" style="margin-left:1.6rem;">🗑️ ফাইল মুছে ফেলুন</div>
+
+      <div class="cmd-box" onclick="copyCmd(this)">
+
+        rm -r folder_name
+
+        <span class="material-icons">check_circle</span>
+
+      </div>
+
+      <div class="desc" style="margin-left:1.6rem;">🗑️ ফোল্ডার সহ মুছুন</div>
+
+    </div>
+
+    <!-- Card ৩ -->
+
+    <div class="card">
+
+      <div class="card-header">
+
+        <span class="material-icons">content_copy</span>
+
+        <h2>৩. কপি ও মুভ</h2>
+
+      </div>
+
+      <div class="desc">কপি এবং স্থানান্তর</div>
+
+      <div class="cmd-box" onclick="copyCmd(this)">
+
+        cp file.txt /path/
+
+        <span class="material-icons">check_circle</span>
+
+      </div>
+
+      <div class="desc" style="margin-left:1.6rem;">📄 ফাইল কপি করুণ</div>
+
+      <div class="cmd-box" onclick="copyCmd(this)">
+
+        mv file.txt /path/
+
+        <span class="material-icons">check_circle</span>
+
+      </div>
+
+      <div class="desc" style="margin-left:1.6rem;">🚚 ফাইল স্থানান্তর</div>
+
+    </div>
+
+    <!-- Card ৪ -->
+
+    <div class="card">
+
+      <div class="card-header">
+
+        <span class="material-icons">list</span>
+
+        <h2>৪. লিস্টিং</h2>
+
+      </div>
+
+      <div class="desc">ডিরেক্টরি ব্রাউজ</div>
+
+      <div class="cmd-box" onclick="copyCmd(this)">
+
+        ls -la
+
+        <span class="material-icons">check_circle</span>
+
+      </div>
+
+    </div>
+
+    <!-- Card ৫ -->
+
+    <div class="card">
+
+      <div class="card-header">
+
+        <span class="material-icons">cloud_download</span>
+
+        <h2>৫. ডাউনলোড</h2>
+
+      </div>
+
+      <div class="desc">ফাইল ডাউনলোড</div>
+
+      <div class="cmd-box" onclick="copyCmd(this)">
+
+        wget https://example.com/file.zip
+
+        <span class="material-icons">check_circle</span>
+
+      </div>
+
+    </div>
+
+    <!-- Card ৬ -->
+
+    <div class="card">
+
+      <div class="card-header">
+
+        <span class="material-icons">code</span>
+
+        <h2>৬. PHP সার্ভার</h2>
+
+      </div>
+
+      <div class="desc">লোকাল সার্ভার চালু</div>
+
+      <div class="cmd-box" onclick="copyCmd(this)">
+
+        pkg install php
+
+        <span class="material-icons">check_circle</span>
+
+      </div>
+
+      <div class="cmd-box" onclick="copyCmd(this)">
+
+        php -S localhost:8000
+
+        <span class="material-icons">check_circle</span>
+
+      </div>
+
+    </div>
+
+    <!-- Card ৭ -->
+
+    <div class="card">
+
+      <div class="card-header">
+
+        <span class="material-icons">settings_ethernet</span>
+
+        <h2>৭. Internet</h2>
+
+      </div>
+
+      <div class="cmd-box" onclick="copyCmd(this)">
+
+        ping google.com
+
+        <span class="material-icons">check_circle</span>
+
+      </div>
+
+    </div>
+
+    <!-- Card ৮ -->
+
+    <div class="card">
+
+      <div class="card-header">
+
+        <span class="material-icons">storage</span>
+
+        <h2>৮. Storage Permission</h2>
+
+      </div>
+
+      <div class="cmd-box" onclick="copyCmd(this)">
+
+        termux-setup-storage
+
+        <span class="material-icons">check_circle</span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    function copyCmd(el) {
+
+      const cmd = el.innerText.replace('check_circle', '').trim();
+
+      navigator.clipboard.writeText(cmd);
+
+      el.classList.add('copied');
+
+      setTimeout(() => el.classList.remove('copied'), 1200);
+
+    }
+
+  </script>
+
+</body>
+
+        </html>
