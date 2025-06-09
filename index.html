@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MyWEB</title>
+    <title>আধুনিক ওয়েবসাইট কালেকশন</title>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* CSS Variables for Theming (Light/Dark Mode) */
@@ -279,13 +279,13 @@
 
     <div class="container">
         <header class="header">
-            <h1 class="header-title">🌐 My Website</h1>
+            <h1 class="header-title">🌐 ওয়েবসাইট কালেকশন</h1>
             <div class="header-controls">
                 <div class="search-bar">
                     <span class="search-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                     </span>
-                    <input type="text" id="searchInput" placeholder="Search Website">
+                    <input type="text" id="searchInput" placeholder="এখানে খুঁজুন...">
                 </div>
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                     <!-- Icon will be inserted by JS -->
@@ -308,21 +308,21 @@
     <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-
         // --- ডেটা: সমস্ত লিঙ্ক এখানে রাখুন ---
         const links = [
-            { name: "Termux Command", url: "Web/code-editor.html", category: "Code" },
-            { name: "Code Editor", url: "Web/termux-command.html", category: "Code" },
-            
+            { name: "গিটহাব (Github)", url: "https://github.com", category: "Code" },
+            { name: "গুগল ফন্টস (Google Fonts)", url: "https://fonts.google.com", category: "Design" },
+            { name: "চ্যাটজিপিটি (ChatGPT)", url: "https://chat.openai.com", category: "AI" },
+            { name: "মিডজার্নি (Midjourney)", url: "https://www.midjourney.com", category: "AI" },
+            { name: "স্ট্যাক ওভারফ্লো (Stack Overflow)", url: "https://stackoverflow.com", category: "Code" },
+            { name: "ফেসবুক (Facebook)", url: "https://facebook.com", category: "Social" },
+            { name: "ইউটিউব (YouTube)", url: "https://youtube.com", category: "Social" },
+            { name: "ভিএসকোড (VSCode)", url: "https://code.visualstudio.com", category: "Tools" },
+            { name: "ফিగ్মা (Figma)", url: "https://www.figma.com", category: "Design" },
+            { name: "ক্যানভা (Canva)", url: "https://www.canva.com", category: "Design" },
+            { name: "গুগল ড্রাইভ (Google Drive)", url: "https://drive.google.com", category: "Tools" },
+            { name: "টার্মাক্স কমান্ড", url: "https://guide.termux.dev/", category: "Tools"},
         ];
-
-
-
-
-
-
-
-
 
         // --- প্রয়োজনীয় DOM এলিমেন্ট নির্বাচন ---
         const linkContainer = document.getElementById('link-container');
@@ -351,7 +351,7 @@
             linkContainer.innerHTML = ''; // পুরোনো কার্ড মুছে ফেলা
             
             if (filteredLinks.length === 0) {
-                linkContainer.innerHTML = `<p>No results found.</p>`;
+                linkContainer.innerHTML = `<p>কোনো ফলাফল পাওয়া যায়নি।</p>`;
                 return;
             }
 
@@ -369,10 +369,10 @@
                         <a href="${link.url}" target="_blank" class="link-name">${link.name}</a>
                     </div>
                     <div class="actions">
-                        <a class="link-button" href="${link.url}" target="_blank">Visit</a>
+                        <a class="link-button" href="${link.url}" target="_blank">ভিজিট করুন</a>
                         <button class="copy-button" data-url="${link.url}">
                             ${copyIcon} 
-                            <span>Copy</span>
+                            <span>কপি</span>
                         </button>
                     </div>
                 `;
@@ -411,7 +411,7 @@
             if (copyButton) {
                 const urlToCopy = copyButton.dataset.url;
                 navigator.clipboard.writeText(urlToCopy).then(() => {
-                    showToast('Link copied successfully!');
+                    showToast('লিঙ্ক সফলভাবে কপি করা হয়েছে!');
                 }).catch(err => {
                     showToast('কপি করতে ব্যর্থ হয়েছেন।');
                     console.error('Copy failed', err);
