@@ -1,464 +1,427 @@
 <!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>আধুনিক ওয়েবসাইট কালেকশন</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* CSS Variables for Theming (Light/Dark Mode) */
-        :root {
-            --bg-color: #f0f4f8;
-            --card-bg-color: #ffffff;
-            --text-color: #1e293b;
-            --heading-color: #0f172a;
-            --secondary-text-color: #64748b;
-            --primary-color: #4f46e5;
-            --primary-hover-color: #4338ca;
-            --shadow-color: rgba(0, 0, 0, 0.08);
-            --icon-bg-color: #e2e8f0;
-            --icon-bg-hover: #cbd5e1;
-            --border-color: #e2e8f0;
-        }
+<html lang="bn">  
+<head>  
+    <meta charset="UTF-8" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+    <title>MyWEB</title>  
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">  
+    <style>  
+        /* CSS Variables for Theming (Light/Dark Mode) */  
+        :root {  
+            --bg-color: #f0f4f8;  
+            --card-bg-color: #ffffff;  
+            --text-color: #1e293b;  
+            --heading-color: #0f172a;  
+            --secondary-text-color: #64748b;  
+            --primary-color: #4f46e5;  
+            --primary-hover-color: #4338ca;  
+            --shadow-color: rgba(0, 0, 0, 0.08);  
+            --icon-bg-color: #e2e8f0;  
+            --icon-bg-hover: #cbd5e1;  
+            --border-color: #e2e8f0;  
+        }  
+        body.dark-mode {  
+            --bg-color: #0f172a;  
+            --card-bg-color: #1e293b;  
+            --text-color: #e2e8f0;  
+            --heading-color: #f8fafc;  
+            --secondary-text-color: #94a3b8;  
+            --primary-color: #6366f1;  
+            --primary-hover-color: #4f46e5;  
+            --shadow-color: rgba(0, 0, 0, 0.2);  
+            --icon-bg-color: #334155;  
+            --icon-bg-hover: #475569;  
+            --border-color: #334155;  
+        }  
+        * {  
+            margin: 0;  
+            padding: 0;  
+            box-sizing: border-box;  
+        }  
+        body {  
+            font-family: 'Hind Siliguri', sans-serif;  
+            background-color: var(--bg-color);  
+            color: var(--text-color);  
+            transition: background-color 0.3s ease, color 0.3s ease;  
+            padding: 20px;  
+        }  
+        .container {  
+            max-width: 1200px;  
+            margin: 0 auto;  
+        }  
+        /* Header Section */  
+        .header {  
+            display: flex;  
+            justify-content: space-between;  
+            align-items: center;  
+            padding: 20px 0;  
+            margin-bottom: 20px;  
+            flex-wrap: wrap;  
+            gap: 20px;  
+        }  
+        .header-title {  
+            font-size: 2.25rem;  
+            color: var(--heading-color);  
+            font-weight: 700;  
+        }  
+        .header-controls {  
+            display: flex;  
+            align-items: center;  
+            gap: 15px;  
+        }  
+        /* Search Bar */  
+        .search-bar {  
+            position: relative;  
+        }  
+        #searchInput {  
+            padding: 12px 15px 12px 40px;  
+            border-radius: 25px;  
+            border: 1px solid var(--border-color);  
+            background-color: var(--card-bg-color);  
+            color: var(--text-color);  
+            font-size: 1rem;  
+            width: 250px;  
+            transition: all 0.3s ease;  
+        }  
+        #searchInput:focus {  
+            outline: none;  
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);  
+            border-color: var(--primary-color);  
+        }  
+        .search-icon {  
+            position: absolute;  
+            left: 15px;  
+            top: 50%;  
+            transform: translateY(-50%);  
+            color: var(--secondary-text-color);  
+        }  
+          
+        /* Theme Toggle Button */  
+        .theme-toggle {  
+            background-color: var(--icon-bg-color);  
+            border: none;  
+            width: 44px;  
+            height: 44px;  
+            border-radius: 50%;  
+            cursor: pointer;  
+            display: flex;  
+            justify-content: center;  
+            align-items: center;  
+            transition: background-color 0.3s ease, transform 0.2s ease;  
+        }  
+        .theme-toggle:hover {  
+            background-color: var(--icon-bg-hover);  
+            transform: scale(1.1);  
+        }  
+        .theme-toggle svg {  
+            color: var(--text-color);  
+        }  
+        /* Category Filters */  
+        .category-filters {  
+            display: flex;  
+            flex-wrap: wrap;  
+            gap: 10px;  
+            margin-bottom: 30px;  
+        }  
+        .filter-btn {  
+            background-color: var(--card-bg-color);  
+            color: var(--secondary-text-color);  
+            border: 1px solid var(--border-color);  
+            padding: 8px 16px;  
+            border-radius: 20px;  
+            font-size: 0.9rem;  
+            font-weight: 500;  
+            cursor: pointer;  
+            transition: all 0.3s ease;  
+        }  
+        .filter-btn:hover {  
+            background-color: var(--icon-bg-color);  
+            color: var(--heading-color);  
+        }  
+        .filter-btn.active {  
+            background-color: var(--primary-color);  
+            color: #ffffff;  
+            border-color: var(--primary-color);  
+        }  
+        /* Link Cards Grid */  
+        #link-container {  
+            display: grid;  
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));  
+            gap: 20px;  
+        }  
+        .link-card {  
+            background-color: var(--card-bg-color);  
+            border-radius: 16px;  
+            box-shadow: 0 4px 12px var(--shadow-color);  
+            padding: 20px;  
+            display: flex;  
+            flex-direction: column;  
+            gap: 15px;  
+            transition: transform 0.3s ease, box-shadow 0.3s ease;  
+            animation: fadeIn 0.5s ease-out forwards;  
+            opacity: 0;  
+        }  
+        @keyframes fadeIn {  
+            from {  
+                opacity: 0;  
+                transform: translateY(10px);  
+            }  
+            to {  
+                opacity: 1;  
+                transform: translateY(0);  
+            }  
+        }  
+        .link-card:hover {  
+            transform: translateY(-5px);  
+            box-shadow: 0 8px 20px var(--shadow-color);  
+        }  
+        .link-header {  
+            display: flex;  
+            align-items: center;  
+            gap: 12px;  
+        }  
+        .favicon {  
+            width: 24px;  
+            height: 24px;  
+            border-radius: 4px;  
+            background-color: var(--icon-bg-color); /* Fallback/placeholder */
+        }  
+        .link-name {  
+            font-size: 1.1rem;  
+            font-weight: 600;  
+            color: var(--heading-color);  
+            text-decoration: none;  
+        }  
+        .link-name:hover {  
+            text-decoration: underline;  
+            color: var(--primary-color);  
+        }  
+        .actions {  
+            display: flex;  
+            align-items: center;  
+            gap: 10px;  
+            margin-top: auto; /* Pushes actions to the bottom */  
+        }  
+        .link-button, .copy-button {  
+            padding: 8px 14px;  
+            border: none;  
+            border-radius: 8px;  
+            font-size: 0.9rem;  
+            font-weight: 500;  
+            cursor: pointer;  
+            transition: all 0.3s ease;  
+            display: flex;  
+            align-items: center;  
+            gap: 6px;  
+        }  
+        .link-button {  
+            background-color: var(--primary-color);  
+            color: white;  
+            text-decoration: none;  
+        }  
+        .link-button:hover {  
+            background-color: var(--primary-hover-color);  
+        }  
+        .copy-button {  
+            background-color: var(--icon-bg-color);  
+            color: var(--text-color);  
+        }  
+        .copy-button:hover {  
+            background-color: var(--icon-bg-hover);  
+        }  
+          
+        /* Toast Notification */  
+        .toast {  
+            position: fixed;  
+            bottom: 20px;  
+            left: 50%;  
+            transform: translateX(-50%);  
+            background-color: #2c3e50;  
+            color: white;  
+            padding: 12px 20px;  
+            border-radius: 25px;  
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);  
+            visibility: hidden;  
+            opacity: 0;  
+            transition: opacity 0.3s, visibility 0.3s, bottom 0.3s;  
+            z-index: 1000;  
+        }  
+        .toast.show {  
+            visibility: visible;  
+            opacity: 1;  
+            bottom: 30px;  
+        }  
+    </style>  
+</head>  
+<body>  
+    <div class="container">  
+        <header class="header">  
+            <h1 class="header-title">🌐 My Website</h1>  
+            <div class="header-controls">  
+                <div class="search-bar">  
+                    <span class="search-icon">  
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>  
+                    </span>  
+                    <input type="text" id="searchInput" placeholder="Search Website">  
+                </div>  
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">  
+                    </button>  
+            </div>  
+        </header>  
+        <main>  
+            <div class="category-filters" id="categoryFilters">  
+                </div>  
+            <div id="link-container">  
+                </div>  
+        </main>  
+    </div>  
+    <div id="toast" class="toast"></div>  
+    <script>  
+        document.addEventListener('DOMContentLoaded', () => {  
+            // --- ডেটা: সমস্ত লিঙ্ক এখানে রাখুন ---  
+            const links = [  
+                // নিশ্চিত করুন যে এই URL গুলি সঠিক এবং ফাইলগুলি সঠিক জায়গায় আছে।
+                // উদাহরণস্বরূপ, যদি আপনার index.html একটি ফোল্ডারে থাকে এবং Web ফোল্ডারটি তার পাশেই থাকে:
+                { name: "Termux Command", url: "Web/termux-command.html", category: "Programming" },  
+                { name: "Code Editor", url: "Web/code-editor.html", category: "Programming" },  
+              
+            ];  
+            // --- ডেটা সমাপ্ত ---  
+            // --- প্রয়োজনীয় DOM এলিমেন্ট নির্বাচন ---  
+            const linkContainer = document.getElementById('link-container');  
+            const searchInput = document.getElementById('searchInput');  
+            const categoryFiltersContainer = document.getElementById('categoryFilters');  
+            const themeToggle = document.getElementById('themeToggle');  
+            const toast = document.getElementById('toast');  
+            // --- আইকনসমূহ ---  
+            const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;  
+            const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;  
+            const copyIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;  
+            let currentFilter = 'All'; // ডিফল্ট ফিল্টার 'All' সেট করা হলো  
+            // --- ফাংশন: লিঙ্ক কার্ড রেন্ডার করা ---  
+            const renderLinks = () => {  
+                const searchTerm = searchInput.value.toLowerCase();  
+                  
+                const filteredLinks = links.filter(link => {  
+                    const matchesCategory = currentFilter === 'All' || link.category === currentFilter;  
+                    const matchesSearch = link.name.toLowerCase().includes(searchTerm) ||
+                                          link.category.toLowerCase().includes(searchTerm); // ক্যাটাগরি দিয়েও সার্চ করা যাবে
+                    return matchesCategory && matchesSearch;  
+                });  
+                  
+                linkContainer.innerHTML = ''; // পুরোনো কার্ড মুছে ফেলা  
+                  
+                if (filteredLinks.length === 0) {  
+                    linkContainer.innerHTML = `<p style="text-align: center; color: var(--secondary-text-color);">No results found.</p>`;  
+                    return;  
+                }  
+                filteredLinks.forEach((link, index) => {  
+                    let domain = '';
+                    try {
+                        // অভ্যন্তরীণ লিঙ্কের জন্য ডোমেইন নাও থাকতে পারে, তাই চেষ্টা-ক্যাচ ব্যবহার করা হয়েছে।
+                        // এটি একটি সম্পূর্ণ URL না হলে এরর দেবে, যা আমরা এড়িয়ে যেতে চাই।
+                        if (link.url.startsWith('http://') || link.url.startsWith('https://')) {
+                            domain = new URL(link.url).hostname;
+                        }
+                    } catch (e) {
+                        domain = ''; 
+                    }
+                    
+                    const faviconUrl = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=64` : '';
+                    const faviconHtml = faviconUrl ? `<img src="${faviconUrl}" alt="${link.name} favicon" class="favicon" onerror="this.style.display='none'">` : '';
 
-        body.dark-mode {
-            --bg-color: #0f172a;
-            --card-bg-color: #1e293b;
-            --text-color: #e2e8f0;
-            --heading-color: #f8fafc;
-            --secondary-text-color: #94a3b8;
-            --primary-color: #6366f1;
-            --primary-hover-color: #4f46e5;
-            --shadow-color: rgba(0, 0, 0, 0.2);
-            --icon-bg-color: #334155;
-            --icon-bg-hover: #475569;
-            --border-color: #334155;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Hind Siliguri', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s ease, color 0.3s ease;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Header Section */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .header-title {
-            font-size: 2.25rem;
-            color: var(--heading-color);
-            font-weight: 700;
-        }
-
-        .header-controls {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        /* Search Bar */
-        .search-bar {
-            position: relative;
-        }
-        #searchInput {
-            padding: 12px 15px 12px 40px;
-            border-radius: 25px;
-            border: 1px solid var(--border-color);
-            background-color: var(--card-bg-color);
-            color: var(--text-color);
-            font-size: 1rem;
-            width: 250px;
-            transition: all 0.3s ease;
-        }
-        #searchInput:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
-            border-color: var(--primary-color);
-        }
-        .search-icon {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--secondary-text-color);
-        }
-        
-        /* Theme Toggle Button */
-        .theme-toggle {
-            background-color: var(--icon-bg-color);
-            border: none;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        .theme-toggle:hover {
-            background-color: var(--icon-bg-hover);
-            transform: scale(1.1);
-        }
-        .theme-toggle svg {
-            color: var(--text-color);
-        }
-
-        /* Category Filters */
-        .category-filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-        .filter-btn {
-            background-color: var(--card-bg-color);
-            color: var(--secondary-text-color);
-            border: 1px solid var(--border-color);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .filter-btn:hover {
-            background-color: var(--icon-bg-color);
-            color: var(--heading-color);
-        }
-        .filter-btn.active {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            border-color: var(--primary-color);
-        }
-
-        /* Link Cards Grid */
-        #link-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .link-card {
-            background-color: var(--card-bg-color);
-            border-radius: 16px;
-            box-shadow: 0 4px 12px var(--shadow-color);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeIn 0.5s ease-out forwards;
-            opacity: 0;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .link-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px var(--shadow-color);
-        }
-
-        .link-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .favicon {
-            width: 24px;
-            height: 24px;
-            border-radius: 4px;
-            background-color: var(--icon-bg-color);
-        }
-
-        .link-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--heading-color);
-            text-decoration: none;
-        }
-        .link-name:hover {
-            text-decoration: underline;
-            color: var(--primary-color);
-        }
-
-        .actions {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: auto; /* Pushes actions to the bottom */
-        }
-
-        .link-button, .copy-button {
-            padding: 8px 14px;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .link-button {
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-        }
-        .link-button:hover {
-            background-color: var(--primary-hover-color);
-        }
-
-        .copy-button {
-            background-color: var(--icon-bg-color);
-            color: var(--text-color);
-        }
-        .copy-button:hover {
-            background-color: var(--icon-bg-hover);
-        }
-        
-        /* Toast Notification */
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #2c3e50;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.3s, visibility 0.3s, bottom 0.3s;
-            z-index: 1000;
-        }
-
-        .toast.show {
-            visibility: visible;
-            opacity: 1;
-            bottom: 30px;
-        }
-
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <header class="header">
-            <h1 class="header-title">🌐 ওয়েবসাইট কালেকশন</h1>
-            <div class="header-controls">
-                <div class="search-bar">
-                    <span class="search-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                    </span>
-                    <input type="text" id="searchInput" placeholder="এখানে খুঁজুন...">
-                </div>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <!-- Icon will be inserted by JS -->
-                </button>
-            </div>
-        </header>
-
-        <main>
-            <div class="category-filters" id="categoryFilters">
-                <!-- Filter buttons will be generated by JS -->
-            </div>
-            <div id="link-container">
-                <!-- Link cards will be injected here by JavaScript -->
-            </div>
-        </main>
-    </div>
-
-    <div id="toast" class="toast"></div>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-
-        // --- ডেটা: সমস্ত লিঙ্ক এখানে রাখুন ---
-        const links = [
-            { name: "গিটহাব (Github)", url: "https://github.com/web-git-lab/Home/blob/main/Web/termux-command.html", category: "Code" },
-            { name: "গুগল ফন্টস (Google Fonts)", url: "https://fonts.google.com", category: "Design" },
-            { name: "AI", url: "https://chat.com", category: "AI" },
-            { name: "মিডজার্নি (Midjourney)", url: "https://www.midjourney.com", category: "AI" },
-            { name: "স্ট্যাক ওভারফ্লো (Stack Overflow)", url: "https://stackoverflow.com", category: "Code" },
-            { name: "ফেসবুক (Facebook)", url: "https://facebook.com", category: "Social" },
-            { name: "ইউটিউব (YouTube)", url: "https://youtube.com", category: "Social" },
-            { name: "ভিএসকোড (VSCode)", url: "https://code.visualstudio.com", category: "Tools" },
-            { name: "ফিగ్মা (Figma)", url: "Web/termux-command.html", category: "Design" },
-            { name: "ক্যানভা (Canva)", url: "https://www.canva.com", category: "Design" },
-            { name: "গুগল ড্রাইভ (Google Drive)", url: "https://drive.google.com", category: "Tools" },
-            { name: "টার্মাক্স কমান্ড", url: "https://guide.termux.dev/", category: "Tools"},
-             { name: "Termux Command", url: "Web/code-editor.html", category: "Code" },
-            { name: "Code Editor", url: "https://github.com/web-git-lab/Home/blob/main/Web/termux-command.html/", category: "Code" },
-        ];
-
-        // --- প্রয়োজনীয় DOM এলিমেন্ট নির্বাচন ---
-        const linkContainer = document.getElementById('link-container');
-        const searchInput = document.getElementById('searchInput');
-        const categoryFiltersContainer = document.getElementById('categoryFilters');
-        const themeToggle = document.getElementById('themeToggle');
-        const toast = document.getElementById('toast');
-
-        // --- আইকনসমূহ ---
-        const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
-        const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
-        const copyIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
-
-        let currentFilter = 'All';
-
-        // --- ফাংশন: লিংক কার্ড রেন্ডার করা ---
-        const renderLinks = () => {
-            const searchTerm = searchInput.value.toLowerCase();
-            
-            const filteredLinks = links.filter(link => {
-                const matchesCategory = currentFilter === 'All' || link.category === currentFilter;
-                const matchesSearch = link.name.toLowerCase().includes(searchTerm);
-                return matchesCategory && matchesSearch;
-            });
-            
-            linkContainer.innerHTML = ''; // পুরোনো কার্ড মুছে ফেলা
-            
-            if (filteredLinks.length === 0) {
-                linkContainer.innerHTML = `<p>কোনো ফলাফল পাওয়া যায়নি।</p>`;
-                return;
-            }
-
-            filteredLinks.forEach((link, index) => {
-                const domain = new URL(link.url).hostname;
-                const faviconUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
-                
-                const card = document.createElement('div');
-                card.className = 'link-card';
-                card.style.animationDelay = `${index * 50}ms`;
-
-                card.innerHTML = `
-                    <div class="link-header">
-                        <img src="${faviconUrl}" alt="${link.name} favicon" class="favicon" onerror="this.style.display='none'">
-                        <a href="${link.url}" target="_blank" class="link-name">${link.name}</a>
-                    </div>
-                    <div class="actions">
-                        <a class="link-button" href="${link.url}" target="_blank">ভিজিট করুন</a>
-                        <button class="copy-button" data-url="${link.url}">
-                            ${copyIcon} 
-                            <span>কপি</span>
-                        </button>
-                    </div>
-                `;
-                linkContainer.appendChild(card);
-            });
-        };
-
-        // --- ফাংশন: ক্যাটাগরি ফিল্টার বাটন তৈরি করা ---
-        const renderCategoryFilters = () => {
-            const categories = ['All', ...new Set(links.map(link => link.category))];
-            categoryFiltersContainer.innerHTML = '';
-            categories.forEach(category => {
-                const button = document.createElement('button');
-                button.className = 'filter-btn';
-                button.textContent = category === 'All' ? 'সব' : category;
-                button.dataset.category = category;
-                if (category === currentFilter) {
-                    button.classList.add('active');
-                }
-                categoryFiltersContainer.appendChild(button);
-            });
-        };
-
-        // --- ফাংশন: টোস্ট নোটিফিকেশন দেখানো ---
-        const showToast = (message) => {
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 2000);
-        };
-        
-        // --- ক্লিপবোর্ডে কপি করার ফাংশন ---
-        linkContainer.addEventListener('click', (e) => {
-            const copyButton = e.target.closest('.copy-button');
-            if (copyButton) {
-                const urlToCopy = copyButton.dataset.url;
-                navigator.clipboard.writeText(urlToCopy).then(() => {
-                    showToast('লিঙ্ক সফলভাবে কপি করা হয়েছে!');
-                }).catch(err => {
-                    showToast('কপি করতে ব্যর্থ হয়েছেন।');
-                    console.error('Copy failed', err);
-                });
-            }
-        });
-
-        // --- ইভেন্ট লিসেনার: সার্চ ইনপুট ---
-        searchInput.addEventListener('input', renderLinks);
-        
-        // --- ইভেন্ট লিসেনার: ক্যাটাগরি ফিল্টার ---
-        categoryFiltersContainer.addEventListener('click', (e) => {
-            if (e.target.classList.contains('filter-btn')) {
-                currentFilter = e.target.dataset.category;
-                // Active class আপডেট করা
-                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                e.target.classList.add('active');
-                renderLinks();
-            }
-        });
-
-        // --- ডার্ক মোড লজিক ---
-        const applyTheme = (theme) => {
-            if (theme === 'dark') {
-                document.body.classList.add('dark-mode');
-                themeToggle.innerHTML = sunIcon;
-            } else {
-                document.body.classList.remove('dark-mode');
-                themeToggle.innerHTML = moonIcon;
-            }
-        };
-
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            localStorage.setItem('theme', newTheme);
-            applyTheme(newTheme);
-        });
-
-        // --- প্রাথমিক অবস্থা সেট করা ---
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        applyTheme(savedTheme);
-        renderCategoryFilters();
-        renderLinks();
-    });
-    </script>
-</body>
+                    const card = document.createElement('div');  
+                    card.className = 'link-card';  
+                    card.style.animationDelay = `${index * 50}ms`;  
+                    card.innerHTML = `  
+                        <div class="link-header">  
+                            ${faviconHtml}  
+                            <a href="${link.url}" target="_blank" class="link-name">${link.name}</a>  
+                        </div>  
+                        <div class="actions">  
+                            <a class="link-button" href="${link.url}" target="_blank">Visit</a>  
+                            <button class="copy-button" data-url="${link.url}">  
+                                ${copyIcon}   
+                                <span>Copy</span>  
+                            </button>  
+                        </div>  
+                    `;  
+                    linkContainer.appendChild(card);  
+                });  
+            };  
+            // --- ফাংশন: ক্যাটাগরি ফিল্টার বাটন তৈরি করা ---  
+            const renderCategoryFilters = () => {  
+                // 'All' সহ সকল ইউনিক ক্যাটাগরি সংগ্রহ করা  
+                const categories = ['All', ...new Set(links.map(link => link.category))];  
+                categoryFiltersContainer.innerHTML = ''; // পুরোনো বাটন মুছে ফেলা  
+                categories.forEach(category => {  
+                    const button = document.createElement('button');  
+                    button.className = 'filter-btn';  
+                    button.textContent = category === 'All' ? 'All' : category; // 'All' কে 'সব' এ পরিবর্তন করা হয়েছে  
+                    button.dataset.category = category;  
+                    if (category === currentFilter) {  
+                        button.classList.add('active');  
+                    }  
+                    categoryFiltersContainer.appendChild(button);  
+                });  
+            };  
+            // --- ফাংশন: টোস্ট নোটিফিকেশন দেখানো ---  
+            const showToast = (message) => {  
+                toast.textContent = message;  
+                toast.classList.add('show');  
+                setTimeout(() => {  
+                    toast.classList.remove('show');  
+                }, 2000);  
+            };  
+              
+            // --- ক্লিপবোর্ডে কপি করার ফাংশন ---  
+            linkContainer.addEventListener('click', (e) => {  
+                const copyButton = e.target.closest('.copy-button');  
+                if (copyButton) {  
+                    const urlToCopy = copyButton.dataset.url;  
+                    navigator.clipboard.writeText(urlToCopy).then(() => {  
+                        showToast('Link copied!'); // মেসেজ পরিবর্তন করা হয়েছে  
+                    }).catch(err => {  
+                        showToast('কপি করতে ব্যর্থ হয়েছেন।');  
+                        console.error('কপি ব্যর্থ হয়েছে', err);  
+                    });  
+                }  
+            });  
+            // --- ইভেন্ট লিসেনার: সার্চ ইনপুট ---  
+            searchInput.addEventListener('input', renderLinks);  
+              
+            // --- ইভেন্ট লিসেনার: ক্যাটাগরি ফিল্টার ---  
+            categoryFiltersContainer.addEventListener('click', (e) => {  
+                if (e.target.classList.contains('filter-btn')) {  
+                    currentFilter = e.target.dataset.category;  
+                    // Active class আপডেট করা  
+                    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));  
+                    e.target.classList.add('active');  
+                    renderLinks();  
+                }  
+            });  
+            // --- ডার্ক মোড লজিক ---  
+            const applyTheme = (theme) => {  
+                if (theme === 'dark') {  
+                    document.body.classList.add('dark-mode');  
+                    themeToggle.innerHTML = sunIcon;  
+                } else {  
+                    document.body.classList.remove('dark-mode');  
+                    themeToggle.innerHTML = moonIcon;  
+                }  
+            };  
+            themeToggle.addEventListener('click', () => {  
+                const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';  
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';  
+                localStorage.setItem('theme', newTheme);  
+                applyTheme(newTheme);  
+            });  
+            // --- প্রাথমিক অবস্থা সেট করা ---  
+            const savedTheme = localStorage.getItem('theme') || 'light';  
+            applyTheme(savedTheme);  
+            renderCategoryFilters();  
+            renderLinks();  
+        });  
+    </script>  
+</body>  
 </html>
